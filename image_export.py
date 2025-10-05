@@ -1,5 +1,6 @@
 """Extended image format support for InvokeAI."""
 
+from datetime import datetime
 from pathlib import Path
 from typing import Literal
 from uuid import uuid4
@@ -32,8 +33,9 @@ def _get_output_path(context: InvocationContext, extension: str) -> Path:
     output_dir = context.config.get().outputs_path / "invoke_image_export"
     output_dir.mkdir(parents=True, exist_ok=True)
 
+    timestamp = datetime.now().strftime("%Y-%m-%d-%H%M")
     unique_id = str(uuid4())[:8]
-    filename = f"{extension}_{unique_id}.{extension}"
+    filename = f"{timestamp}-{unique_id}.{extension}"
 
     return output_dir / filename
 
@@ -43,7 +45,7 @@ def _get_output_path(context: InvocationContext, extension: str) -> Path:
     title="Save Image as PNG",
     tags=["image", "save", "export", "png"],
     category="image",
-    version="0.0.1",
+    version="0.0.2",
     use_cache=False,
 )
 class SavePNGInvocation(BaseInvocation):
@@ -67,7 +69,7 @@ class SavePNGInvocation(BaseInvocation):
     title="Save Image as JPEG",
     tags=["image", "save", "export", "jpeg", "jpg"],
     category="image",
-    version="0.0.1",
+    version="0.0.2",
     use_cache=False,
 )
 class SaveJPEGInvocation(BaseInvocation):
@@ -105,7 +107,7 @@ class SaveJPEGInvocation(BaseInvocation):
     title="Save Image as WebP",
     tags=["image", "save", "export", "webp"],
     category="image",
-    version="0.0.1",
+    version="0.0.2",
     use_cache=False,
 )
 class SaveWebPInvocation(BaseInvocation):
@@ -136,7 +138,7 @@ class SaveWebPInvocation(BaseInvocation):
     title="Save Image as AVIF",
     tags=["image", "save", "export", "avif"],
     category="image",
-    version="0.0.1",
+    version="0.0.2",
     use_cache=False,
 )
 class SaveAVIFInvocation(BaseInvocation):
@@ -160,7 +162,7 @@ class SaveAVIFInvocation(BaseInvocation):
     title="Save Image as TIFF",
     tags=["image", "save", "export", "tiff"],
     category="image",
-    version="0.0.1",
+    version="0.0.2",
     use_cache=False,
 )
 class SaveTIFFInvocation(BaseInvocation):

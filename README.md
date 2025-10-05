@@ -26,4 +26,4 @@ uv pip install pillow-avif-plugin
 
 ## Notes
 
-Exported images are saved to `outputs/invoke_image_export/` with format-prefixed filenames. Images with transparency are automatically converted to RGB when saving as JPEG.
+Exported images are saved to `outputs/invoke_image_export/` with timestamp-prefixed filenames. Images with transparency are automatically converted to RGB when saving as JPEG.
